@@ -9,6 +9,11 @@ import { TypeAnimation } from 'react-type-animation';
 import CountUp from "react-countup";
 import { motion, useScroll } from "framer-motion"
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Field, Form, Formik } from 'formik';
+import { toast } from 'react-toastify';
+import PromotionPopup from '../../component/subComponent/PromotionPopup/PromotionPopup';
+import { API_URL } from '../../utils/API_URL';
 
 
 export default function Home() {
@@ -24,7 +29,37 @@ export default function Home() {
     autoplaySpeed: 3000,
 
   };
-const navigate = useNavigate()
+  const navigate = useNavigate()
+
+
+  const initialValues = {
+    firstName: '',
+    email: '',
+    phoneNumber: '',
+  };
+
+
+
+  const onSubmit = async (values, { resetForm }) => {
+    try {
+      console.log('Form data', values);
+      const response = await axios.post(`${API_URL}/contact`, values);
+      console.log(response.data.message);
+
+      // Show a success toast notification
+      toast.success(response.data.message);
+
+      // Clear form fields
+      resetForm();
+    } catch (error) {
+      console.error('Error submitting form', error);
+      toast.error('There was an error submitting your form.');
+    }
+  };
+
+
+
+
 
   return (
     <>
@@ -61,28 +96,41 @@ const navigate = useNavigate()
 
           <div className='detail-section'>
 
-            <div className='detail'>
+
+            <Formik
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+            >
+              <Form className='detail'>
               <div className='title'>
                 <img src={`${iconRoute}/user.svg`} alt='img_1' />
                 {/* <span> Full Name</span> */}
-                <input type="text" placeholder="Full Name" />
+                <Field type="text" placeholder="Full Name" name="firstName" />
 
               </div>
+
               <div className='title'>
                 <img src={`${iconRoute}/email2.svg`} alt='img_1' />
                 {/* <span>Email Address</span> */}
-                <input type="text" placeholder="Email Address" />
+                <Field type="text" placeholder="Email Address" name="email" />
 
               </div>
+
               <div className='title'>
                 <img src={`${iconRoute}/phone3.svg`} alt='img_1' />
                 {/* <span>Phone Number</span> */}
-                <input type="text" placeholder="Phone Number" />
+                <Field type="text" placeholder="Phone Number" name="phoneNumber"/>
               </div>
+
               <div className='btn'>
-                <button> Get Started </button>
+                <button type="submit"> Get Started </button>
               </div>
-            </div>
+
+              </Form>
+
+</Formik>
+
+            
 
           </div>
 
@@ -175,12 +223,8 @@ const navigate = useNavigate()
             </div>
 
             <div className='services-btn'>
-              <button className="more-button" onClick={()=>navigate("/services")}>
+              <button className="more-button" onClick={() => navigate("/services")}>
                 MORE
-                <span className="corner top-left"></span>
-                <span className="corner top-right"></span>
-                <span className="corner bottom-left"></span>
-                <span className="corner bottom-right"></span>
               </button>
 
             </div>
@@ -218,7 +262,7 @@ const navigate = useNavigate()
                   <div>
                     <p>They made an amazing website that not only looks great but is also easy for my users. They mixed my ideas with their skills so
                       well — it went beyond what I hoped for. Till now! My users love the digital experience they created.</p>
-                    <span> John.Wick </span>
+                    <span> Daniel.Joe </span>
 
                     <div className='rating'>
                       <i class="fa fa-star" aria-hidden="true"></i>
@@ -230,9 +274,8 @@ const navigate = useNavigate()
 
                   </div>
                   <div>
-                    <p>They made an amazing website that not only looks great but is also easy for my users. They mixed my ideas with their skills so
-                      well — it went beyond what I hoped for. Till now! My users love the digital experience they created.</p>
-                    <span> Tony.Stark  </span>
+                    <p>Their team kept everything on track, hitting all the deadlines and goals. They communicated really well, and when issues popped up, they were quick to solve them.</p>
+                    <span> Charlie.William </span>
 
                     <div className='rating'>
                       <i class="fa fa-star" aria-hidden="true"></i>
@@ -252,6 +295,9 @@ const navigate = useNavigate()
 
         </div>
       </Layout>
+
+      <PromotionPopup></PromotionPopup>
+
     </>
   )
 }

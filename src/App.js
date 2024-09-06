@@ -21,7 +21,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/services' element={<Service />} />
         
-        <Route path='/service-detail/:id' element={<ServiceDetail />} />
+        <Route path='/service-detail/:slug' element={<ServiceDetail />} />
 
         <Route path='/about' element={<About />} />
     

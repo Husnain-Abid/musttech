@@ -32,11 +32,11 @@ export default function Footer() {
           <div className='offer'>
             <h4>PAGES</h4>
             <ul>
-              <li><a href='/'>Home</a></li>
-              <li><a href='/'>Service</a></li>
-              <li><a href='/'>Pricing</a></li>
-              <li><a href='/'>Contact Us</a> </li>
-              <li><a href='/'>About Us</a></li>
+              <li><Link to='/'>Home</Link></li>
+              <li><Link to='/services'>Services</Link></li>
+              <li><Link to='/pricing'>Pricing</Link></li>
+              <li><Link to='/contact'>Contact Us</Link> </li>
+              <li><Link to='/about'>About Us</Link></li>
             </ul>
           </div>
 

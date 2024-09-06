@@ -200,7 +200,7 @@ img {
     margin-top: 60px;
 }
 
-.about-seciton-3 .team-section .team-images {
+/* .about-seciton-3 .team-section .team-images {
     width: 35%;
     text-align: center;
 }
@@ -214,14 +214,14 @@ img {
 
 .about-seciton-3 .team-section .team-images .team-img img {
     width: 50%;
-}
+} */
 
 .about-seciton-3 .team-section .team-contact {
     display: flex;
     flex-direction: column;
     gap: 1vw;
     align-items: center;
-    width: 60%;
+    width: 100%;
     justify-content: center;
 }
 
@@ -282,6 +282,12 @@ img {
     background: none;
     /* Remove background color */
     margin-right: 5.12px;
+    cursor: pointer;
+}
+
+.about-seciton-3 .team-section .team-contact .team-btn .btn-1:hover {
+    background-color: #FB5C46;
+    color: white;
 }
 
 .about-seciton-3 .team-section .team-contact .team-btn .btn-2 {
@@ -291,7 +297,12 @@ img {
     background-color: none;
     background: none;
     /* Remove background color */
+    cursor: pointer;
+}
 
+.about-seciton-3 .team-section .team-contact .team-btn .btn-2:hover {
+    color: white;    
+    background-color:  black;
 }
 
 /* .about-seciton-3 end */

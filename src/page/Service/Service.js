@@ -11,7 +11,8 @@ export default function Service() {
   const navigate = useNavigate();
 
   const handleNav = (id) => {  
-    navigate(`/service-detail/${id}`)
+    // navigate(`/service-detail/${id}`)
+    window.open(`/service-detail/${id}`, '_blank');  
   }
 
 
@@ -31,7 +32,7 @@ export default function Service() {
             <div className='main-serices-box'>
 
               <div className='service-col-1'>
-                <div className='service-card' onClick={()=>handleNav("1")}>
+                <div className='service-card' onClick={()=>handleNav("digital-marketing")}>
                   <img src={`${iconRoute}/grow.svg`} alt='icon' />
                   <h1>Digital Marketing</h1>
                   <p>The world is currently online,
@@ -41,7 +42,7 @@ export default function Service() {
                     digital marketing.</p>
                 </div>
 
-                <div className='service-card' onClick={()=>handleNav("2")}>
+                <div className='service-card' onClick={()=>handleNav("graphic-designing")}>
                   <img src={`${iconRoute}/graphic.svg`} alt='icon' />
                   <h1>Graphic Designing</h1>
                   <p>Graphic Designing is an
@@ -53,7 +54,7 @@ export default function Service() {
               </div>
 
               <div className='service-col-2'>
-                <div className='service-card' onClick={()=>handleNav("3")}>
+                <div className='service-card' onClick={()=>handleNav("web-development")}>
                   <img src={`${iconRoute}/website.svg`} alt='icon' />
                   <h1>Web Development</h1>
                   <p>A website is a central tool for
@@ -63,7 +64,7 @@ export default function Service() {
                     quality Websites.</p>
                 </div>
 
-                <div className='service-card' onClick={()=>handleNav("4")}>
+                <div className='service-card' onClick={()=>handleNav("app-development")}>
                   <img src={`${iconRoute}/android.svg`} alt='icon' />
                   <h1>App Development</h1>
                   <p>A dedicated application
@@ -73,7 +74,7 @@ export default function Service() {
                     business processes.</p>
                 </div>
 
-                <div className='service-card'  onClick={()=>handleNav("5")}>
+                <div className='service-card'  onClick={()=>handleNav("crm-software")}>
                   <img src={`${iconRoute}/crm.svg`} alt='icon' />
                   <h1>CRM Software</h1>
                   <p>Now a days CRM is the most important approach
@@ -86,14 +87,14 @@ export default function Service() {
 
               <div className='service-col-1'>
 
-                <div className='service-card' onClick={()=>handleNav("6")}>
+                <div className='service-card' onClick={()=>handleNav("ui-design")}>
                   <img src={`${iconRoute}/uiux.svg`} alt='icon' />
                   <h1>UI/UX DESIGN</h1>
                   <p>Blend aesthetics with user-friendly
                     functionality for designs that stand out.</p>
                 </div>
 
-                <div className='service-card' onClick={()=>handleNav("7")}>
+                <div className='service-card' onClick={()=>handleNav("blockchain-development")}>
                   <img src={`${iconRoute}/blockchain.svg`} alt='icon' />
                   <h1>Blockchain Development</h1>
                   <p>Explore innovative decentralized solutions that bring a fresh perspective to your business.</p>

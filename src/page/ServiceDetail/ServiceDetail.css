@@ -63,6 +63,18 @@ img {
   width: 80%;
 }
 
+.service-detail .redirect {
+  margin: 5vh 0;
+}
+.service-detail .redirect button{
+  padding: 19.48px 26.66px;
+  border: 1.03px solid black;
+  border-radius: 5.13px;
+  background-color: var(--font-color-1);
+  cursor: pointer;
+  color: white;
+
+}
 
 /* services-section end */
 

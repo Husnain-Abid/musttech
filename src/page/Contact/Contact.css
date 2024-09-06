@@ -8,6 +8,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     /* background-color: white; */
     border-radius: 14.5px;
+    padding: 0 5vw;
 }
 
 .contact-info {
@@ -226,6 +227,11 @@ input:focus {
     right: 10%;
     transform: rotate(12deg);
 }
+
+.contact-error{
+    color: var(--font-color-1);
+}
+
 
 /* Media query for mobile devices */
 @media (max-width: 1800px) {

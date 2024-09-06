@@ -2,10 +2,13 @@ import React from 'react'
 import Layout from '../../component/Layout/Layout'
 import ASSET_PATHS from '../../constant'
 import './About.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function About() {
     const imgRoute = ASSET_PATHS.IMG_URL
     const iconRoute = ASSET_PATHS.ICON_URL
+const navigate = useNavigate();
+
     return (
         <>
             <Layout>
@@ -58,13 +61,13 @@ export default function About() {
                             </div>
 
                             <div className='ceo-contact'>
-                                <h1>Armish Atta</h1>
+                                <h1>Armash Ata</h1>
                                 <h5>CHEIF EXECUTIVE OFFICIER</h5>
-                                <p>Armish Atta, as a Co-founder of MustTech, has been a guiding force in shaping the company's trajectory. With a
+                                <p>Armash Ata, as a Co-founder of MustTech, has been a guiding force in shaping the company's trajectory. With a
                                     rich background and expertise in Project Management, Armish has played a crucial role in MustTech evolution
                                     since its inception.
                                 </p>
-                                <p>In his capacity as a Co-founder, Inaam has been instrumental in steering the company towards success. His strategic
+                                <p>In his capacity as a Co-founder, Armash has been instrumental in steering the company towards success. His strategic
                                     insights and hands-on approach have contributed to MustTech growth.
                                 </p>
                                 <h4>MUSTTECH SOLUTIONS</h4>
@@ -73,7 +76,7 @@ export default function About() {
                         </div>
 
                         <div className='team-section'>
-                            <div className='team-images'>
+                            {/* <div className='team-images'>
 
                                 <h2>OUR TEAM </h2>
                                 <div className='team-img'>
@@ -86,7 +89,7 @@ export default function About() {
                                 </div>
 
 
-                            </div>
+                            </div> */}
 
                             <div className='team-contact'>
 
@@ -100,8 +103,8 @@ export default function About() {
                                 </ul>
 
                                 <div className='team-btn'>
-                                    <button className='btn-1'>Request A Call</button>
-                                    <button className='btn-2'>Quick Quote</button>
+                                    {/* <button className='btn-1'>Request A Call</button> */}
+                                    <button className='btn-2' onClick={()=>navigate("/contact")}>Quick Quote</button>
                                 </div>
                             </div>
 
