@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';import './App.css';
 import './Common.css';
 import Home from './page/Home/Home';
 import Pricing from './page/Pricing/Pricing';
@@ -10,6 +10,16 @@ import About from './page/About/About';
 import ServiceDetail from './page/ServiceDetail/ServiceDetail';
 
 function App() {
+
+  const location = useLocation();
+
+  // Google Analytics tracking on route change
+  useEffect(() => {
+    window.gtag('config', 'G-8BCTNW4LQE', {
+      page_path: location.pathname,
+    });
+  }, [location]);
+
 
   return (
     <>
