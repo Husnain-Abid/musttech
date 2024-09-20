@@ -166,6 +166,7 @@ input:focus {
 
 .contact-form .radio-group input {
     accent-color: black;
+    margin-right: 5px;
 }
 
 .contact-form .form-message-row {
@@ -228,7 +229,7 @@ input:focus {
     transform: rotate(12deg);
 }
 
-.contact-error{
+.contact-error {
     color: var(--font-color-1);
 }
 
@@ -321,7 +322,7 @@ input:focus {
     }
 
     .contact-form .areoplan {
-    display: none;
+        display: none;
     }
 
 }
@@ -366,7 +367,7 @@ input:focus {
         z-index: 1;
         width: 100px;
     }
-    
+
     .contact-info .contact-image-1 {
         position: absolute;
         bottom: -5;

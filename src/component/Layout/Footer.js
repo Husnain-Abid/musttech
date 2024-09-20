@@ -1,11 +1,17 @@
 import React from 'react'
 import ASSET_PATHS from '../../constant'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Footer() {
   const iconRoute = ASSET_PATHS.ICON_URL
   const imgRoute = ASSET_PATHS.IMG_URL
 
+  const navigate = useNavigate()
+
+  const handleNav = (id) => {  
+    // navigate(`/service-detail/${id}`)
+    window.open(`/service-detail/${id}`, '_blank');  
+  }
 
   return (
     <>
@@ -20,12 +26,12 @@ export default function Footer() {
           <div className='offer'>
             <h4>WE OFFER</h4>
             <ul>
-              <li>Web Development</li>
-              <li>App Development</li>
-              <li>Project Managemnet</li>
-              <li>Blockchain Development</li>
-              <li>Saas Service</li>
-              <li>Graphic Design</li>
+              <li onClick={()=>handleNav("web-development")}>Web Development</li>
+              <li onClick={()=>handleNav("app-development")}>App Development</li>
+              <li onClick={()=>handleNav("ui-design")}>UI/UX DESIGN</li>
+              <li onClick={()=>handleNav("blockchain-development")}>Blockchain Development</li>
+              <li onClick={()=>handleNav("crm-software")}>CRM Software</li>
+              <li onClick={()=>handleNav("graphic-designing")}>Graphic Design</li>
             </ul>
           </div>
 

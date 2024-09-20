@@ -164,9 +164,9 @@
 .offer h4 {
   margin: 10px 0;
   font-family: var(--Manrope);
-  font-size: 15.03px;
+  font-size: 18.03px;
   font-weight: 500;
-  line-height: 18.04px;
+  line-height: 25.04px;
   letter-spacing: 0.902006208896637px;
   color: white;
 }
@@ -177,12 +177,12 @@
 
 .offer li {
   font-family: var(--Manrope);
-  font-size: 12.03px;
+  font-size: 15.03px;
   font-weight: 400;
-  line-height: 18.04px;
+  line-height: 22.04px;
   margin: 5px 0;
-  /* color: black; */
   color: white;
+  cursor: pointer;
 }
 
 .footer li a {
@@ -195,7 +195,7 @@
   margin-right: 10px;
 }
 
-.footer .socail img {
+.footer .socail a{
   text-decoration: none;
   color: white;
 }
@@ -221,7 +221,7 @@
 
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
 
   .footer {
     display: flex;

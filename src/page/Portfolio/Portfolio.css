@@ -133,6 +133,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 10vh 0;
   }
 
   .portfolio .grid .portfolio-card .portfolio-content h3 {
@@ -157,11 +158,11 @@
 
 
   .portfolio-nav ul li {
-    margin: 0 5px;
+    margin: 0 ;
   }
 
   .portfolio-nav ul li a {
-    padding: 0px 5px;
-    font-size: 10px;
+    padding: 0px 10px;
+    font-size: 12px;
   }
 }

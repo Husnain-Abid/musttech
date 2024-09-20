@@ -29,16 +29,19 @@ export default function Home() {
     autoplaySpeed: 3000,
 
   };
+
   const navigate = useNavigate()
 
+  const handleNav = (id) => {
+    // navigate(`/service-detail/${id}`)
+    window.open(`/service-detail/${id}`, '_blank');
+  }
 
   const initialValues = {
     firstName: '',
     email: '',
     phoneNumber: '',
   };
-
-
 
   const onSubmit = async (values, { resetForm }) => {
     try {
@@ -56,8 +59,6 @@ export default function Home() {
       toast.error('There was an error submitting your form.');
     }
   };
-
-
 
 
 
@@ -102,35 +103,35 @@ export default function Home() {
               onSubmit={onSubmit}
             >
               <Form className='detail'>
-              <div className='title'>
-                <img src={`${iconRoute}/user.svg`} alt='img_1' />
-                {/* <span> Full Name</span> */}
-                <Field type="text" placeholder="Full Name" name="firstName" />
+                <div className='title'>
+                  <img src={`${iconRoute}/user.svg`} alt='img_1' />
+                  {/* <span> Full Name</span> */}
+                  <Field type="text" placeholder="Full Name" name="firstName" />
 
-              </div>
+                </div>
 
-              <div className='title'>
-                <img src={`${iconRoute}/email2.svg`} alt='img_1' />
-                {/* <span>Email Address</span> */}
-                <Field type="text" placeholder="Email Address" name="email" />
+                <div className='title'>
+                  <img src={`${iconRoute}/email2.svg`} alt='img_1' />
+                  {/* <span>Email Address</span> */}
+                  <Field type="text" placeholder="Email Address" name="email" />
 
-              </div>
+                </div>
 
-              <div className='title'>
-                <img src={`${iconRoute}/phone3.svg`} alt='img_1' />
-                {/* <span>Phone Number</span> */}
-                <Field type="text" placeholder="Phone Number" name="phoneNumber"/>
-              </div>
+                <div className='title'>
+                  <img src={`${iconRoute}/phone3.svg`} alt='img_1' />
+                  {/* <span>Phone Number</span> */}
+                  <Field type="text" placeholder="Phone Number" name="phoneNumber" />
+                </div>
 
-              <div className='btn'>
-                <button type="submit"> Get Started </button>
-              </div>
+                <div className='btn'>
+                  <button type="submit"> Get Started </button>
+                </div>
 
               </Form>
 
-</Formik>
+            </Formik>
 
-            
+
 
           </div>
 
@@ -161,7 +162,7 @@ export default function Home() {
             </div>
             <div className='box'>
               <img src={`${imgRoute}/rating.png`} alt='img_1' />
-              <CountUp start={0} end={100} duration={3} suffix="%" />
+              <CountUp start={0} end={100} duration={10} suffix="%" />
               <p>HAPPY CLIENTS</p>
             </div>
             <div className='box'>
@@ -186,7 +187,7 @@ export default function Home() {
 
             <div className='main-serices'>
               <div className='service-col-1'>
-                <div className='service-card'>
+                <div className='service-card' onClick={() => handleNav("digital-marketing")}>
                   <img src={`${iconRoute}/grow.svg`} alt='icon' />
                   <h1>Digital Marketing</h1>
                   <p>The world is currently online,
@@ -198,7 +199,7 @@ export default function Home() {
               </div>
 
               <div className='service-col-2'>
-                <div className='service-card'>
+                <div className='service-card' onClick={() => handleNav("web-development")}>
                   <img src={`${iconRoute}/website.svg`} alt='icon' />
                   <h1>Web Development</h1>
                   <p>A website is a central tool for
@@ -212,7 +213,7 @@ export default function Home() {
 
               <div className='service-col-1'>
 
-                <div className='service-card'>
+                <div className='service-card' onClick={() => handleNav("ui-design")}>
                   <img src={`${iconRoute}/uiux.svg`} alt='icon' />
                   <h1>UI/UX DESIGN</h1>
                   <p>Blend aesthetics with user-friendly

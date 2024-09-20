@@ -8,10 +8,10 @@ import Contact from './page/Contact/Contact';
 import Service from './page/Service/Service';
 import About from './page/About/About';
 import ServiceDetail from './page/ServiceDetail/ServiceDetail';
+import Career from './page/Career/Career';
+import Job from './page/Job/Job';
 
 function App() {
-
-
 
   return (
     <>
@@ -26,7 +26,10 @@ function App() {
         <Route path='/service-detail/:slug' element={<ServiceDetail />} />
 
         <Route path='/about' element={<About />} />
-    
+        
+        <Route path='/career' element={<Career/>} />
+        <Route path='/job/:slug' element={<Job/>} />
+
       </Routes>
 
     </>

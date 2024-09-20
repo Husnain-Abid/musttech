@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../component/Layout/Layout'
 import ASSET_PATHS from '../../constant'
 import './Contact.css';
@@ -11,6 +11,9 @@ import { API_URL } from '../../utils/API_URL';
 export default function Contact() {
   const imgRoute = ASSET_PATHS.IMG_URL
   const iconRoute = ASSET_PATHS.ICON_URL
+
+  const [loading, setLoading] = useState(false); // State to manage loading status
+
 
   const initialValues = {
     firstName: '',
@@ -34,9 +37,10 @@ export default function Contact() {
 
   const onSubmit = async (values, { resetForm }) => {
     try {
-      console.log('Form data', values);
+      setLoading(true); // Set loading to true when the request starts
+
       const response = await axios.post(`${API_URL}/contact`, values);
-      console.log(response.data.message);
+      setLoading(false); // Set loading to true when the request starts
 
       // Show a success toast notification
       toast.success(response.data.message);
@@ -44,7 +48,6 @@ export default function Contact() {
       // Clear form fields
       resetForm();
     } catch (error) {
-      console.error('Error submitting form', error);
       toast.error('There was an error submitting your form.');
     }
   };
@@ -157,15 +160,24 @@ export default function Contact() {
                 </div>
 
                 <div className="form-btn-row">
-                  <button type="submit">Send Message</button>
+                  <button
+                    type="submit"
+                    className="submit-button"
+                    disabled={loading} // Disable button while loading
+                  >
+                    {loading ? 'Sending...' : 'Send Message'}
+                  </button>
                 </div>
+
+
+
               </Form>
 
             </Formik>
 
 
 
-{/* 
+            {/* 
             <div className='areoplan'>
 
               <img src={`${iconRoute}/areoplan.svg`} />

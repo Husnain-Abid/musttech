@@ -1,100 +1,87 @@
-import React from 'react'
-import Layout from '../../component/Layout/Layout'
-import ASSET_PATHS from '../../constant'
+import React from 'react';
+import Layout from '../../component/Layout/Layout';
+import ASSET_PATHS from '../../constant';
 import './Pricing.css';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { toast } from 'react-toastify';
+
 
 export default function Pricing() {
-  const imgRoute = ASSET_PATHS.IMG_URL
-  const iconRoute = ASSET_PATHS.ICON_URL
+  const imgRoute = ASSET_PATHS.IMG_URL;
+  const iconRoute = ASSET_PATHS.ICON_URL;
 
+  // Price information for the plans
+  const plans = [
+    { name: "Standard", price: "600.00", description: "WordPress Developer, Custom website Developer, Responsive design, Pixel Perfect", duration: "5 working days" },
+    { name: "Individual Hire", price: "1500.00", description: "App Developer, Web Developer, Quality assurance, Project Manager, Designer", duration: "30 days subscription" },
+    { name: "Team Hire", price: "4000.00", description: "App Developer, Web Developer, Quality assurance, Project Manager, Designer", duration: "Depends on project" }
+  ];
+
+  const handleTransactionSuccess = (details) => {
+    const name = details.payer.name.given_name;
+    toast.success(`Transaction completed successfully by ${name}`);
+  };
+
+  const handleTransactionError = () => {
+    toast.error('Transaction failed. Please try again.');
+  };
 
   return (
     <>
       <Layout>
-        <div className='pricing'>
+      <PayPalScriptProvider options={{ "client-id": "AeOVt0-uKPFtjnlYtMMBoKf0dR6j4tv8EI0FkXibHctvc69HVHIJz-XAorlaF7Pem1mtW5d_ki-TRQ-M" , "components": "buttons", "intent": "capture" }}>
+          <div className='pricing'>
+            <div className="pricing-section">
+              <h2>PRICING</h2>
+              <p>Unlock Your Potential With These Plans</p>
+              <div className="pricing-cards">
 
-
-          <div class="pricing-section">
-            <h2>PRICING</h2>
-            <p>Unlock Your Potential With These Plans</p>
-            <div class="pricing-cards">
-              <div class="pricing-card">
-                <div class="card-header">
-                  <h5>Standard</h5>
-                  <p class="price">$600 <span>/m</span> </p>
-                </div>
-                <div class="card-body">
-                  <ul>
-                    <li>WordPress Developer</li>
-                    <li>Custom website Developer</li>
-                    <li>Responsive design</li>
-                    <li>Pixel Perfect</li>
-                  </ul>
-                  <div class="card-footer">
-                    <h5>Duration</h5>
-                    <p>5 working days</p>
-                    <p>Time may vary according to your requirments</p>
-                    <p>revision allowed(2)</p>
-                    <button>BUY NOW</button>
+                {plans.map((plan, index) => (
+                  <div className="pricing-card" key={index}>
+                    <div className="card-header">
+                      <h5>{plan.name}</h5>
+                      <p className="price">${plan.price} <span>/m</span></p>
+                    </div>
+                    <div className="card-body">
+                      <ul>
+                        {plan.description.split(", ").map((feature, i) => (
+                          <li key={i}>{feature}</li>
+                        ))}
+                      </ul>
+                      <div className="card-footer">
+                        <h5>Duration</h5>
+                        <p>{plan.duration}</p>
+                        <PayPalButtons
+                          style={{ layout: "vertical" }}
+                          createOrder={(data, actions) => {
+                            return actions.order.create({
+                              purchase_units: [{
+                                amount: {
+                                  value: plan.price, // Plan price
+                                },
+                                description: plan.name // Plan name
+                              }]
+                            });
+                          }}
+                          onApprove={(data, actions) => {
+                            return actions.order.capture().then(function(details) {
+                              handleTransactionSuccess(details); // On success
+                            });
+                          }}
+                          onError={() => {
+                            handleTransactionError(); // On failure
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                ))}
 
-              <div class="pricing-card">
-                <div class="card-header">
-                  <h5>Individual Hire</h5>
-                  <p>$ 1500<span>/m</span></p>
-                </div>
-                <div class="card-body">
-                  <ul>
-                    <li>App Developer</li>
-                    <li>Web Developer</li>
-                    <li>Quality assurance</li>
-                    <li>Project Manager</li>
-                    <li>Designer</li>
-                  </ul>
-                  <div class="card-footer">
-                    <h5>Duration</h5>
-                    <p>Each request update(24-48 hrs)</p>
-                    <p>Onboarding time (12-24 hrs)</p>
-                    <p>Subscription(30 days)</p>
-                    <p>turnaround time(depends on project)</p>
-                    <button>BUY NOW</button>
-                  </div>
-                </div>
               </div>
-
-              <div class="pricing-card">
-                <div class="card-header">
-                  <h5>Team Hire</h5>
-                  <p>$4000<span>/m</span></p>
-                </div>
-                <div class="card-body">
-                  <ul>
-                    <li>App Developer</li>
-                    <li>Web Developer</li>
-                    <li>Quality assurance</li>
-                    <li>Project Manager</li>
-                    <li>Designer</li>
-                  </ul>
-                  <div class="card-footer">
-                    <h5>Duration</h5>
-                    <p>Designer(24-72 hrs/page)</p>
-                    <p>Developer (1-2 day/page)</p>
-                    <p>Quality assurance(24hrs/page)</p>
-                    <button>BUY NOW</button>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
-
-
-
-
-        </div>
+        </PayPalScriptProvider>
       </Layout>
     </>
-  )
+  );
 }

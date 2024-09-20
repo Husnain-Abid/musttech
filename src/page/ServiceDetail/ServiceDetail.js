@@ -39,11 +39,11 @@ const navigate = useNavigate();
       para: "Turn your ideas into reality with our cutting-edge app development services. We create high-performance, user-friendly mobile and web apps tailored to your business needs. From native iOS and Android apps to cross-platform solutions, we design and develop custom applications that are visually appealing, intuitive, and secure. Our end-to-end process includes planning, design, coding, testing, deployment, and post-launch support, ensuring your app stays optimized and up-to-date."
     },
     {
-      id: 7, image: 's6', heading: "Blockchain Development", slug: "blockchain-development",
+      id: 7, image: 's7', heading: "Blockchain Development", slug: "blockchain-development",
       para: "Unlock the power of blockchain with our expert development services. We create secure, transparent, and efficient blockchain solutions tailored to your business needs, including custom blockchain architectures, smart contracts, dApps, and tokenization. Our process starts with understanding your goals, then designing and developing solutions that enhance efficiency, security, and transparency. We work with platforms like Ethereum and Hyperledger, ensuring your blockchain solution is scalable and future-proof."
     },
     {
-      id: 5, image: 's7', heading: "CRM Software", slug: "crm-software",
+      id: 5, image: 's6', heading: "CRM Software", slug: "crm-software",
       para: "Streamline customer relationships and drive growth with our custom CRM software development services. We create user-friendly CRM solutions that centralize customer data, automate sales processes, and enhance customer satisfaction. Key features include contact management, sales and marketing automation, lead tracking, customer support, and robust analytics. Our scalable CRM solutions are tailored to your business needs and integrate seamlessly with other tools, ensuring ease of use and effective adoption."
     }
   ]
